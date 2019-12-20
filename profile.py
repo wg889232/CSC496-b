@@ -65,7 +65,9 @@ for i in range(params.workerCount + 1):
   link.addInterface(iface)
   
   node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/environment_prep.sh"))
-  
+  node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/setup_jupyter.sh"))
+
+    
   if i == 0:
     node.addService(pg.Execute(shell="sh", command="sudo yum install -y ambari-server"))
     node.addService(pg.Execute(shell="sh", command="sudo ambari-server setup -s"))
